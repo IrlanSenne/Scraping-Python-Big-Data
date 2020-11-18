@@ -1,0 +1,37 @@
+{
+    "Salmos": [{ 
+        "v": [ 
+              {"num":1, "t" : " Louvai ao SENHOR. Louvai, servos do SENHOR, louvai o nome do SENHOR."},
+              {"num":2, "t" : " Seja bendito o nome do Senhor, desde agora para sempre."},
+              { "num":3, "t" : " Desde o nascimento do sol até ao ocaso, seja louvado o nome do Senhor."},
+              { "num":4, "t" : " Exaltado está o Senhor acima de todas as nações, e a sua glória sobre os céus."}
+          
+      ]},{
+       "v": [ 
+          {"num":1, "t" : " Louvai ao SENHOR. Louvai, servos do SENHOR, louvai o nome do SENHOR."},
+          {"num":2, "t" : " Seja bendito o nome do Senhor, desde agora para sempre."},
+          { "num":3, "t" : " Desde o nascimento do sol até ao ocaso, seja louvado o nome do Senhor."},
+          { "num":4, "t" : " Exaltado está o Senhor acima de todas as nações, e a sua glória sobre os céus."}
+      
+  ]}],
+  "Mateus": [{ 
+      "v": [ 
+            {"num":1, "t" : " Louvai ao SENHOR. Louvai, servos do SENHOR, louvai o nome do SENHOR."},
+            {"num":2, "t" : " Seja bendito o nome do Senhor, desde agora para sempre."},
+            { "num":3, "t" : " Desde o nascimento do sol até ao ocaso, seja louvado o nome do Senhor."},
+            { "num":4, "t" : " Exaltado está o Senhor acima de todas as nações, e a sua glória sobre os céus."}
+        
+    ]},{
+     "v": [ 
+        {"num":1, "t" : " Louvai ao SENHOR. Louvai, servos do SENHOR, louvai o nome do SENHOR."},
+        {"num":2, "t" : " Seja bendito o nome do Senhor, desde agora para sempre."},
+        { "num":3, "t" : " Desde o nascimento do sol até ao ocaso, seja louvado o nome do Senhor."},
+        { "num":4, "t" : " Exaltado está o Senhor acima de todas as nações, e a sua glória sobre os céus."}
+    
+]}]
+   
+  
+}
+
+      
+  
