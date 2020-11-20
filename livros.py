@@ -1,8 +1,9 @@
 import requests 
 from bs4 import BeautifulSoup
 
-livros= [
-        'https://www.bibliaonline.com.br/acf/gn','https://www.bibliaonline.com.br/acf/ex',
+sl = open('biblia-acf.json','a+',encoding='utf8')
+sl.write('{')
+livros= ['https://www.bibliaonline.com.br/acf/gn','https://www.bibliaonline.com.br/acf/ex',
         'https://www.bibliaonline.com.br/acf/lv','https://www.bibliaonline.com.br/acf/nm',
         'https://www.bibliaonline.com.br/acf/dt','https://www.bibliaonline.com.br/acf/js',
         'https://www.bibliaonline.com.br/acf/jz','https://www.bibliaonline.com.br/acf/rt',
@@ -45,15 +46,39 @@ while (num < len(livros)):
     reqCapitulos = requests.get(capitulos)
     soupCapitulos =BeautifulSoup(reqCapitulos.content,'html.parser')
     lenCap = soupCapitulos.find('ul').find_all('a')
+    titulo = soupCapitulos.find('h1',{ "class":"MuiTypography-root MuiTypography-h1"})
+    sl.write('\n  "'+ titulo.get_text() +'": [')
     while (num2 <= len(lenCap)):
+        sl.write('{ \n        "v":[ \n')
         urlLivros=livros[num]+'/'+str(num2)
         reqLivros = requests.get(urlLivros)
         soupLivros = BeautifulSoup(reqLivros.content,'html.parser')
-        linkLivros = soupLivros.find('article').find_all('p')
-        num2 += 1       
+        linkLivros = soupLivros.find('article').find_all('p')  
+        numVer= 1        
+        for s in soupLivros.find_all('sup'):
+            s.clear() 
         for versiculo in linkLivros:
-            print(versiculo.get_text())                
-    num += 1
+            if (numVer == len(soupLivros.find_all('sup')) and num2 == len(lenCap) and (num + 1) == len(livros)):
+                completo = '           { "num": ' + str(numVer) + ', "t": "' + versiculo.get_text() + '" }\n]}] \n '
+                sl.write(completo)
+                numVer += 1
+            elif (numVer == len(soupLivros.find_all('sup')) and num2 == len(lenCap)):
+                completo = '           { "num": ' + str(numVer) + ', "t": "' + versiculo.get_text() + '" }\n]}], \n '
+                sl.write(completo)
+                numVer += 1  
+            elif (numVer == len(soupLivros.find_all('sup'))):
+                completo = '           { "num": ' + str(numVer) + ', "t": "' + versiculo.get_text() + '" }\n]}, \n '
+                sl.write(completo)
+                numVer += 1                
+            else:
+                completo = '           { "num": ' + str(numVer) + ', "t": "' + versiculo.get_text() + '" },\n'
+                sl.write(completo)
+                numVer += 1   
+        num2 += 1 
+    num += 1        
+sl.write('\n }')
+sl.close()
+    
    
         
         
