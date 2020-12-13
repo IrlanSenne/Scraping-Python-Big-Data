@@ -1,4 +1,4 @@
-import requests 
+import requests
 from bs4 import BeautifulSoup
 
 sl = open('titulosArray.jon','a+',encoding='utf8')
@@ -44,5 +44,5 @@ while (num < len(livros)):
     reqCapitulos = requests.get(capitulos)
     soupCapitulos =BeautifulSoup(reqCapitulos.content,'html.parser')
     titulo = soupCapitulos.find('h1',{ "class":"MuiTypography-root MuiTypography-h1"})
-    sl.write('"'+ titulo.get_text() +'",')
+    sl.write('{ l: "'+str(num)+'",\n livro: '+'"'+ titulo.get_text() +'" },')
     num += 1
